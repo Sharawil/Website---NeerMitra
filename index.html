@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Neer Mitra</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --main1: #9cd6f7;
+  --main2: #9be5ce;
+  --black: #000;
+  --white: #fff;
+  --graybg: #f8f9fb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body { background: var(--white); color: var(--black); }
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--white);
+  padding: 18px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+  z-index: 1000;
+}
+
+.logo-text { font-size: 20px; font-weight: 800; }
+
+.nav-actions { display: flex; gap: 30px; }
+.nav-actions a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--black);
+  cursor: pointer;
+}
+
+/* HERO */
+.hero {
+  padding: 170px 6% 120px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.hero-text { max-width: 650px; }
+.hero-text h1 { font-size: 60px; font-weight: 800; margin-bottom: 25px; }
+.hero-text span { color: var(--main1); }
+.hero-text p { font-size: 20px; margin-bottom: 40px; opacity: 0.85; }
+
+.primary-btn {
+  padding: 16px 32px;
+  background: var(--main1);
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* PANEL */
+.dashboard {
+  width: 450px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hardware-panel {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(155,229,206,0.25), #ffffff 40%);
+  border-radius: 18px;
+  padding: 40px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.08);
+  border: 3px solid var(--main1);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.hardware-row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  padding: 14px;
+  background: rgba(156,214,247,0.15);
+  border-radius: 8px;
+}
+
+/* FEATURES */
+.features {
+  padding: 120px 6%;
+  background: var(--graybg);
+  text-align: center;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.feature-card {
+  background: var(--white);
+  padding: 40px 30px;
+  border-radius: 18px;
+  border: 1px solid #eee;
+}
+
+/* LOGIN PAGE */
+.login-page {
+  display: none;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, var(--main1), var(--main2));
+}
+
+.login-box {
+  background: white;
+  padding: 50px;
+  width: 400px;
+  border-radius: 15px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+
+.login-box input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 14px;
+  background: var(--black);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* DASHBOARDS */
+.dashboard-screen {
+  display: none;
+  padding: 150px 6%;
+  text-align: center;
+}
+/* ===== DASHBOARD STYLING ===== */
+
+.dashboard-screen {
+  display: none;
+  padding: 120px 6%;
+  background: #f4f7fa;
+  min-height: 100vh;
+}
+
+.dashboard-header {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.dashboard-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 1px solid #e6e6e6;
+}
+
+.dashboard-card h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.dashboard-card input,
+.dashboard-card textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.dashboard-card button {
+  padding: 10px 16px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.dashboard-card button:hover {
+  opacity: 0.85;
+}
+
+.emergency-btn {
+  background: red !important;
+}
+
+.logout-btn {
+  margin-top: 40px;
+  background: #333;
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- HOME PAGE -->
+<div id="homePage">
+
+<nav class="navbar">
+  <div class="logo-text">Neer Mitra</div>
+  <div class="nav-actions">
+    <a href="#features">Features</a>
+    <a id="loginNav">Login</a>
+    <a id="signupNav">Sign Up</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>Smart Control for <span>Water Distribution</span></h1>
+    <p>
+      Real-time monitoring of water lanes with automated tank protection
+      and instant motor control to prevent overflow and infrastructure failure.
+    </p>
+    <a class="primary-btn" id="getStartedBtn">Get Started</a>
+  </div>
+
+  <div class="dashboard">
+    <div class="hardware-panel">
+      <div class="hardware-row"><span>Tank Level</span><span>Normal</span></div>
+      <div class="hardware-row"><span>Motor Status</span><span>Running</span></div>
+      <div class="hardware-row"><span>Lane No</span><span>3</span></div>
+      <div class="hardware-row"><span>Overflow Alert</span><span>None</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <h2>Features</h2>
+  <div class="feature-grid">
+    <div class="feature-card"><h3>Real-Time Monitoring</h3><p>Tracks tank levels continuously.</p></div>
+    <div class="feature-card"><h3>Automatic Overflow Prevention</h3><p>Stops motor instantly.</p></div>
+    <div class="feature-card"><h3>Lane-Based Distribution</h3><p>Controls supply lanes.</p></div>
+  </div>
+</section>
+
+</div>
+
+<!-- LOGIN PAGE -->
+<div class="login-page" id="loginPage">
+  <div class="login-box">
+    <h2 id="loginTitle">Login</h2>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <input type="password" id="confirm" placeholder="Confirm Password" style="display:none;">
+    <button id="continueBtn">Continue</button>
+  </div>
+</div>
+
+<!-- DASHBOARDS -->
+<div class="dashboard-screen" id="adminDash">
+  <div class="dashboard-header">Admin Dashboard</div>
+
+  <div class="dashboard-grid">
+
+    <div class="dashboard-card">
+      <h3>Lane Scheduler (AUTO Mode)</h3>
+      <input type="time" id="scheduleTime">
+      <button onclick="setSchedule()">Set Schedule</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>Manual Pump Control</h3>
+      <button onclick="pumpControl('ON')">Pump ON</button>
+      <button onclick="pumpControl('OFF')">Pump OFF</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>Extra Water Request</h3>
+      <button onclick="approveExtraWater()">Approve Colony 1</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>User Complaints</h3>
+      <div id="complaintsList" style="max-height:150px; overflow-y:auto;"></div>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>System Activity Log</h3>
+      <div id="systemLog" style="max-height:150px; overflow-y:auto;"></div>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>Emergency STOP</h3>
+      <button class="emergency-btn" onclick="emergencyStop()">STOP ALL PUMPS</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>ESP32 USB Serial</h3>
+      <button onclick="connectESP()">Connect ESP32</button>
+    </div>
+
+  </div>
+
+  <button class="logout-btn" onclick="location.reload()">Logout</button>
+</div>
+
+<div class="dashboard-screen" id="userDash">
+  <div class="dashboard-header">User Dashboard</div>
+
+  <div class="dashboard-grid">
+
+    <div class="dashboard-card">
+      <h3>Submit Complaint</h3>
+      <textarea id="complaintText" placeholder="Write your complaint..."></textarea>
+      <button onclick="submitComplaint()">Submit Complaint</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>Account Status</h3>
+      <p>You are successfully logged in.</p>
+      <p>System access granted.</p>
+    </div>
+
+  </div>
+
+  <button class="logout-btn" onclick="location.reload()">Logout</button>
+</div>
+
+<script>
+let mode = "login";
+
+const homePage = document.getElementById("homePage");
+const loginPage = document.getElementById("loginPage");
+const loginTitle = document.getElementById("loginTitle");
+const confirmInput = document.getElementById("confirm");
+
+/* Create NEW buttons */
+const actionBtn = document.createElement("button");
+actionBtn.id = "actionBtn";
+actionBtn.textContent = "Login";
+actionBtn.style.width = "100%";
+actionBtn.style.padding = "14px";
+actionBtn.style.background = "#000";
+actionBtn.style.color = "#fff";
+actionBtn.style.border = "none";
+actionBtn.style.borderRadius = "8px";
+actionBtn.style.cursor = "pointer";
+
+document.querySelector(".login-box").appendChild(actionBtn);
+
+/* Remove old Continue button */
+const oldBtn = document.getElementById("continueBtn");
+if (oldBtn) oldBtn.remove();
+
+function openLogin(type){
+  mode = type;
+  homePage.style.display = "none";
+  loginPage.style.display = "flex";
+  loginTitle.textContent = type === "signup" ? "Sign Up" : "Login";
+  confirmInput.style.display = type === "signup" ? "block" : "none";
+  actionBtn.textContent = type === "signup" ? "Register" : "Login";
+}
+
+document.getElementById("loginNav").onclick = () => openLogin("login");
+document.getElementById("signupNav").onclick = () => openLogin("signup");
+document.getElementById("getStartedBtn").onclick = () => openLogin("signup");
+
+/* NEW WORKING BUTTON */
+actionBtn.addEventListener("click", function(){
+
+  const emailInput = document.getElementById("email");
+  const passInput = document.getElementById("password");
+  const confirmInput = document.getElementById("confirm");
+
+  const email = emailInput.value.trim();
+  const pass = passInput.value.trim();
+  const confirmPass = confirmInput.value.trim();
+
+  if(email === "" || pass === ""){
+    alert("Fill all fields");
+    return;
+  }
+
+  /* ===== SIGN UP ===== */
+  if(mode === "signup"){
+
+    if(pass !== confirmPass){
+      alert("Passwords do not match");
+      return;
+    }
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    users.push({ email: email, pass: pass });
+
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Registration Successful! Now Login.");
+    openLogin("login");
+
+    return;
+  }
+
+  /* ===== ADMIN LOGIN ===== */
+  if(email === "admin@neermitra.com" && pass === "UB-1067"){
+    showDash("adminDash");
+    return;
+  }
+
+  /* ===== USER LOGIN ===== */
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  const validUser = users.find(u => u.email === email && u.pass === pass);
+
+  if(validUser){
+    showDash("userDash");
+  } else {
+    alert("Invalid Credentials");
+  }
+
+});
+
+function showDash(id){
+  loginPage.style.display = "none";
+  document.getElementById(id).style.display = "block";
+}
+
+/* ================= ADMIN FEATURES ================= */
+
+function setSchedule(){
+  const time = document.getElementById("scheduleTime").value;
+  if(!time){
+    alert("Select time first");
+    return;
+  }
+  logActivity("AUTO Mode Scheduled at " + time);
+  alert("Lane Scheduled at " + time);
+}
+
+function pumpControl(state){
+  logActivity("Pump turned " + state);
+  alert("Pump " + state);
+}
+
+function approveExtraWater(){
+  logActivity("Extra water approved for Colony 1");
+  alert("Extra water approved for Colony 1");
+}
+
+function emergencyStop(){
+  logActivity("EMERGENCY STOP ACTIVATED");
+  alert("All pumps stopped!");
+}
+
+function logActivity(message){
+  const logDiv = document.getElementById("systemLog");
+  const time = new Date().toLocaleTimeString();
+  logDiv.innerHTML += "<p>[" + time + "] " + message + "</p>";
+}
+
+/* ================= COMPLAINT SYSTEM ================= */
+
+function submitComplaint(){
+  const text = document.getElementById("complaintText").value.trim();
+  if(text === ""){
+    alert("Write something first");
+    return;
+  }
+
+  let complaints = JSON.parse(localStorage.getItem("complaints")) || [];
+  complaints.push(text);
+  localStorage.setItem("complaints", JSON.stringify(complaints));
+
+  alert("Complaint Submitted");
+  document.getElementById("complaintText").value="";
+}
+
+function loadComplaints(){
+  let complaints = JSON.parse(localStorage.getItem("complaints")) || [];
+  const div = document.getElementById("complaintsList");
+
+  if(!div) return;
+
+  div.innerHTML="";
+  complaints.forEach((c,i)=>{
+    div.innerHTML += "<p>" + (i+1) + ". " + c + "</p>";
+  });
+}
+
+/* ================= ESP32 SERIAL ================= */
+
+async function connectESP(){
+  if("serial" in navigator){
+    try{
+      const port = await navigator.serial.requestPort();
+      await port.open({ baudRate: 9600 });
+      alert("ESP32 Connected!");
+      logActivity("ESP32 Connected via USB");
+    }catch(err){
+      alert("Connection Cancelled");
+    }
+  }else{
+    alert("Web Serial not supported in this browser");
+  }
+}
+
+/* ================= AUTO LOAD ================= */
+
+setInterval(()=>{
+  logActivity("System running normally...");
+},10000);
+
+/* Load complaints when admin dashboard opens */
+function showDash(id){
+  loginPage.style.display = "none";
+  document.getElementById(id).style.display = "block";
+
+  if(id === "adminDash"){
+    loadComplaints();
+  }
+}
+
+</script>
+
+</body>
+</html>
